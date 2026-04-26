@@ -45,9 +45,17 @@ export default function ContactForm() {
 
     // Simulasi pengiriman (dalam production: fetch ke API route)
     // const res = await fetch('/api/contact', { method: 'POST', body: JSON.stringify(formData) })
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    const res = await fetch('/api/contact', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(formData),
+})
 
-    setStatus('success')
+if (res.ok) {
+  setStatus('success')
+} else {
+  setStatus('error')
+}
     setFormData({ name: '', email: '', phone: '', subject: '', message: '' })
   }
 
