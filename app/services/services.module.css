@@ -1,0 +1,128 @@
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 3rem;
+}
+
+.serviceCard {
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  border-radius: 16px;
+  padding: 28px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.serviceCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(31,42,55,0.1);
+}
+
+.featured {
+  background: linear-gradient(135deg, #1A9547, #15803d);
+  border-color: transparent;
+  color: #fff;
+}
+
+.featured h3,
+.featured p { color: #fff; }
+
+.serviceIcon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.serviceCard h3 {
+  font-size: 1.05rem;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  color: #1F2A37;
+  margin-bottom: 8px;
+}
+
+.serviceCard p {
+  font-size: 0.875rem;
+  color: #4B5563;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.featured p { color: #bbf7d0; }
+
+.featureList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.featureList li {
+  font-size: 0.8rem;
+  color: #4B5563;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.featured .featureList li { color: #bbf7d0; }
+
+.checkmark {
+  color: #1A9547;
+  font-weight: 700;
+}
+
+.featured .checkmark { color: #fff; }
+
+/* COMPARISON */
+.compGrid {
+  margin-top: 2.5rem;
+}
+
+.compCard {
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  border-radius: 16px;
+  padding: 28px;
+}
+
+.compCard h3 {
+  font-size: 1.1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  color: #1F2A37;
+  margin-bottom: 8px;
+}
+
+.compCard p {
+  font-size: 0.875rem;
+  color: #4B5563;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.compList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.compList li {
+  font-size: 0.875rem;
+  color: #4B5563;
+}
+
+.compTag {
+  display: inline-block;
+  background: #E8F8EE;
+  color: #1A9547;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 50px;
+}
+
+@media (max-width: 768px) {
+  .servicesGrid { grid-template-columns: 1fr; }
+}

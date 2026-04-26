@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "name": "Davit Zarly",
+    "role": "Founder & CEO",
+    "bio": "Mahasiswa Informatika UNP yang passionate di bidang Web Development dan UI/UX Design. Membangun KosKu untuk memudahkan pencarian kos di seluruh Indonesia.",
+    "avatar": "https://i.pravatar.cc/200?img=11",
+    "skills": ["Next.js", "React", "UI/UX", "Node.js"],
+    "instagram": "@davitzarly",
+    "github": "davitzarly"
+  },
+  {
+    "id": "2",
+    "name": "Rina Kusuma",
+    "role": "Lead Frontend Developer",
+    "bio": "Spesialis React dan Next.js dengan pengalaman membangun aplikasi web yang cepat dan responsif. Bertanggung jawab atas tampilan dan pengalaman pengguna KosKu.",
+    "avatar": "https://i.pravatar.cc/200?img=47",
+    "skills": ["React", "Tailwind CSS", "TypeScript", "Figma"],
+    "instagram": "@rinakusuma",
+    "github": "rinakusuma"
+  },
+  {
+    "id": "3",
+    "name": "Budi Santoso",
+    "role": "Backend Developer",
+    "bio": "Ahli dalam membangun API dan sistem backend yang skalabel. Mengelola infrastruktur database dan integrasi layanan eksternal untuk platform KosKu.",
+    "avatar": "https://i.pravatar.cc/200?img=12",
+    "skills": ["Node.js", "PostgreSQL", "REST API", "Docker"],
+    "instagram": "@budisantoso",
+    "github": "budisantoso"
+  },
+  {
+    "id": "4",
+    "name": "Dewi Rahayu",
+    "role": "UI/UX Designer",
+    "bio": "Designer kreatif dengan passion dalam menciptakan pengalaman pengguna yang intuitif dan estetis. Merancang seluruh sistem desain KosKu dari wireframe hingga prototype.",
+    "avatar": "https://i.pravatar.cc/200?img=32",
+    "skills": ["Figma", "Prototyping", "User Research", "Design System"],
+    "instagram": "@dewidesign",
+    "github": "dewidesign"
+  }
+]

@@ -1,0 +1,138 @@
+.profileHero {
+  background: linear-gradient(135deg, #1A9547 0%, #15803d 100%);
+  padding: 60px 0;
+}
+
+.backBtn {
+  display: inline-block;
+  color: #bbf7d0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  transition: color 0.2s;
+}
+
+.backBtn:hover { color: #fff; }
+
+.profileCard {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 4px solid rgba(255,255,255,0.3);
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profileInfo h1 {
+  color: #fff;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  margin-top: 4px;
+}
+
+.role {
+  color: #bbf7d0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.bio {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  max-width: 560px;
+}
+
+.skills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.skillTag {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 0.78rem;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.socials {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.socials a {
+  font-size: 0.85rem;
+  color: #bbf7d0;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.socials a:hover { color: #fff; }
+
+/* OTHER MEMBERS */
+.otherGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 2rem;
+}
+
+.otherCard {
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.otherCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(31,42,55,0.1);
+  border-color: #1A9547;
+}
+
+.otherAvatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #E8F8EE;
+  margin-bottom: 4px;
+}
+
+.otherCard strong {
+  font-size: 0.9rem;
+  color: #1F2A37;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.otherCard span {
+  font-size: 0.75rem;
+  color: #9DA4AE;
+}
+
+@media (max-width: 768px) {
+  .profileCard { flex-direction: column; gap: 24px; }
+  .otherGrid { grid-template-columns: 1fr; }
+}

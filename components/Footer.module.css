@@ -1,0 +1,110 @@
+.footer {
+  background: #1F2A37;
+  color: #D1D5DB;
+  padding: 60px 0 0;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1.4fr 2fr;
+  gap: 60px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid #374151;
+}
+
+.brand .logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.logoDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #1A9547;
+}
+
+.brand p {
+  font-size: 0.875rem;
+  color: #9CA3AF;
+  line-height: 1.7;
+  max-width: 280px;
+}
+
+.socials {
+  display: flex;
+  gap: 12px;
+  margin-top: 1.2rem;
+  font-size: 1.2rem;
+}
+
+.socials a {
+  transition: transform 0.2s;
+}
+
+.socials a:hover {
+  transform: scale(1.2);
+}
+
+.links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.links div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.links strong {
+  color: #fff;
+  font-size: 0.875rem;
+  margin-bottom: 4px;
+}
+
+.links a {
+  font-size: 0.82rem;
+  color: #9CA3AF;
+  transition: color 0.2s;
+}
+
+.links a:hover {
+  color: #86EFAC;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  font-size: 0.8rem;
+  color: #6B7280;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.credit strong {
+  color: #9CA3AF;
+}
+
+@media (max-width: 768px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}

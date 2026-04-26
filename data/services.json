@@ -1,0 +1,44 @@
+[
+  {
+    "id": "1",
+    "icon": "🗺️",
+    "title": "Pencarian Berbasis Lokasi",
+    "description": "Temukan kos terdekat dari kampus, kantor, atau titik penting lainnya menggunakan teknologi geolokasi terkini.",
+    "features": ["Filter radius pencarian", "Peta interaktif", "Estimasi jarak & waktu tempuh", "Integrasi Google Maps"]
+  },
+  {
+    "id": "2",
+    "icon": "❤️",
+    "title": "Kelola Favorit",
+    "description": "Simpan dan bandingkan kos favoritmu kapan saja. Semua tersinkron di seluruh perangkatmu secara real-time.",
+    "features": ["Simpan unlimited kos", "Bandingkan hingga 3 kos", "Sinkron multi-perangkat", "Share ke teman"]
+  },
+  {
+    "id": "3",
+    "icon": "⭐",
+    "title": "Rating & Ulasan Jujur",
+    "description": "Ribuan ulasan nyata dari penghuni kos terverifikasi. Tidak ada manipulasi, hanya fakta dan pengalaman nyata.",
+    "features": ["Ulasan terverifikasi", "Rating bintang detail", "Foto dari penghuni", "Respons pemilik kos"]
+  },
+  {
+    "id": "4",
+    "icon": "🔔",
+    "title": "Notifikasi Real-Time",
+    "description": "Dapatkan alert instan saat kos baru muncul di areamu atau saat harga turun di properti favoritmu.",
+    "features": ["Push notification", "Alert penurunan harga", "Kos baru di area kamu", "Reminder pembayaran sewa"]
+  },
+  {
+    "id": "5",
+    "icon": "💳",
+    "title": "Pembayaran Aman",
+    "description": "Bayar sewa bulanan langsung lewat platform kami dengan berbagai pilihan metode pembayaran yang aman.",
+    "features": ["Transfer bank", "E-wallet (OVO, GoPay, Dana)", "Kartu kredit/debit", "Cicilan 0%"]
+  },
+  {
+    "id": "6",
+    "icon": "📋",
+    "title": "Manajemen Kontrak",
+    "description": "Kelola kontrak sewa, riwayat pembayaran, dan dokumen penting dalam satu dashboard yang rapi dan mudah diakses.",
+    "features": ["Kontrak digital", "Riwayat pembayaran", "Download laporan", "Perpanjangan otomatis"]
+  }
+]
