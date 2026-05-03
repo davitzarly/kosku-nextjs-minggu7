@@ -4,6 +4,26 @@
   gap: 4px;
 }
 
+.notice {
+  border-radius: 12px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  padding: 12px 14px;
+}
+
+.noticeSuccess {
+  background: #E8F8EE;
+  border: 1px solid #86EFAC;
+  color: #136835;
+}
+
+.noticeError {
+  background: #FEF2F2;
+  border: 1px solid #FCA5A5;
+  color: #B91C1C;
+}
+
 .inputError {
   border-color: #ef4444 !important;
 }
@@ -14,26 +34,37 @@
   margin-top: 2px;
 }
 
-.successBox {
-  text-align: center;
-  padding: 40px 20px;
-  display: flex;
-  flex-direction: column;
+.submitButton {
   align-items: center;
-  gap: 12px;
+  border-radius: 12px;
+  display: flex;
+  font-size: 1rem;
+  gap: 10px;
+  justify-content: center;
+  min-height: 52px;
+  padding: 14px;
+  width: 100%;
 }
 
-.successIcon {
-  font-size: 3rem;
+.submitButton:disabled,
+.submitButton:disabled:hover {
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.78;
+  transform: none;
 }
 
-.successBox h3 {
-  font-size: 1.4rem;
-  color: #1F2A37;
+.spinner {
+  animation: spin 0.8s linear infinite;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  border-top-color: #fff;
+  height: 16px;
+  width: 16px;
 }
 
-.successBox p {
-  color: #4B5563;
-  font-size: 0.9rem;
-  max-width: 320px;
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

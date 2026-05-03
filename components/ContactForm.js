@@ -1,22 +1,23 @@
 'use client'
-// CLIENT COMPONENT: Butuh useState untuk mengelola input form dan status pengiriman
 
 import { useState } from 'react'
+import { saveContactMessage } from '@/app/contact/actions'
 import styles from './ContactForm.module.css'
 
+const emptyForm = {
+  name: '',
+  email: '',
+  phone: '',
+  subject: '',
+  message: '',
+}
+
 export default function ContactForm() {
-  // useState = hook React, hanya bisa di Client Component
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: '',
-  })
-  const [status, setStatus] = useState(null) // null | 'loading' | 'success' | 'error'
+  const [formData, setFormData] = useState(emptyForm)
+  const [status, setStatus] = useState('idle')
+  const [notice, setNotice] = useState('')
   const [errors, setErrors] = useState({})
 
-  // Validasi form sederhana
   const validate = () => {
     const newErrors = {}
     if (!formData.name.trim()) newErrors.name = 'Nama wajib diisi'
@@ -28,52 +29,58 @@ export default function ContactForm() {
 
   const handleChange = (e) => {
     const { name, value } = e.target
+
     setFormData((prev) => ({ ...prev, [name]: value }))
-    // Clear error saat user mulai mengetik
     if (errors[name]) setErrors((prev) => ({ ...prev, [name]: '' }))
+
+    if (status !== 'loading') {
+      setStatus('idle')
+      setNotice('')
+    }
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
     const validationErrors = validate()
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors)
+      setStatus('error')
+      setNotice('Periksa kembali data yang wajib diisi.')
       return
     }
 
     setStatus('loading')
+    setNotice('')
+    setErrors({})
 
-    // Simulasi pengiriman (dalam production: fetch ke API route)
-    // const res = await fetch('/api/contact', { method: 'POST', body: JSON.stringify(formData) })
-    const res = await fetch('/api/contact', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(formData),
-})
+    try {
+      const result = await saveContactMessage(formData)
 
-if (res.ok) {
-  setStatus('success')
-} else {
-  setStatus('error')
-}
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '' })
+      setStatus(result.status)
+      setNotice(result.message)
+      setErrors(result.errors || {})
+
+      if (result.status === 'success') {
+        setFormData(emptyForm)
+      }
+    } catch (error) {
+      setStatus('error')
+      setNotice('Terjadi kesalahan saat mengirim pesan. Coba lagi beberapa saat.')
+    }
   }
 
-  if (status === 'success') {
-    return (
-      <div className={styles.successBox}>
-        <span className={styles.successIcon}>🎉</span>
-        <h3>Pesan Terkirim!</h3>
-        <p>Terima kasih telah menghubungi kami. Tim KosKu akan membalas dalam 1x24 jam.</p>
-        <button className="btn-primary" onClick={() => setStatus(null)}>
-          Kirim Pesan Lain
-        </button>
-      </div>
-    )
-  }
+  const isLoading = status === 'loading'
+  const noticeClass = status === 'success' ? styles.noticeSuccess : styles.noticeError
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form} noValidate>
+    <form onSubmit={handleSubmit} className={styles.form} noValidate aria-busy={isLoading}>
+      {notice && (
+        <div className={`${styles.notice} ${noticeClass}`} role={status === 'error' ? 'alert' : 'status'}>
+          {notice}
+        </div>
+      )}
+
       <div className="grid-2">
         <div className="form-group">
           <label htmlFor="name">Nama Lengkap *</label>
@@ -85,9 +92,11 @@ if (res.ok) {
             onChange={handleChange}
             placeholder="contoh: Davit Zarly"
             className={errors.name ? styles.inputError : ''}
+            aria-invalid={Boolean(errors.name)}
           />
           {errors.name && <span className={styles.errorMsg}>{errors.name}</span>}
         </div>
+
         <div className="form-group">
           <label htmlFor="email">Email *</label>
           <input
@@ -98,6 +107,7 @@ if (res.ok) {
             onChange={handleChange}
             placeholder="kamu@email.com"
             className={errors.email ? styles.inputError : ''}
+            aria-invalid={Boolean(errors.email)}
           />
           {errors.email && <span className={styles.errorMsg}>{errors.email}</span>}
         </div>
@@ -115,6 +125,7 @@ if (res.ok) {
             placeholder="08xxxxxxxxxx"
           />
         </div>
+
         <div className="form-group">
           <label htmlFor="subject">Subjek</label>
           <select id="subject" name="subject" value={formData.subject} onChange={handleChange}>
@@ -137,17 +148,14 @@ if (res.ok) {
           onChange={handleChange}
           placeholder="Tulis pesanmu di sini..."
           className={errors.message ? styles.inputError : ''}
+          aria-invalid={Boolean(errors.message)}
         />
         {errors.message && <span className={styles.errorMsg}>{errors.message}</span>}
       </div>
 
-      <button
-        type="submit"
-        className="btn-primary"
-        disabled={status === 'loading'}
-        style={{ width: '100%', padding: '14px', fontSize: '1rem', borderRadius: '12px' }}
-      >
-        {status === 'loading' ? '⏳ Mengirim...' : 'Kirim Pesan →'}
+      <button type="submit" className={`btn-primary ${styles.submitButton}`} disabled={isLoading}>
+        {isLoading && <span className={styles.spinner} aria-hidden="true" />}
+        {isLoading ? 'Mengirim...' : 'Kirim Pesan'}
       </button>
     </form>
   )
