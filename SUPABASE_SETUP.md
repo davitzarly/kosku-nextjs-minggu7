@@ -262,6 +262,7 @@ Penyebab:
 - Environment variable belum ditambahkan di Vercel.
 - Environment variable hanya dipilih untuk `Preview`, bukan `Production`.
 - Belum redeploy setelah mengubah environment variable.
+- `SUPABASE_URL` di Vercel salah, misalnya berisi `/rest/v1`.
 
 Solusi:
 
@@ -269,8 +270,9 @@ Solusi:
 2. Masuk `Environment Variables`.
 3. Tambahkan `SUPABASE_URL`.
 4. Tambahkan `SUPABASE_PUBLISHABLE_KEY`.
-5. Pilih `Production` dan `Preview`.
-6. Redeploy.
+5. Pastikan `SUPABASE_URL` hanya seperti `https://abcdefghijk.supabase.co`, tanpa `/rest/v1`.
+6. Pilih `Production` dan `Preview`.
+7. Redeploy.
 
 ### Error chunk Next.js atau Cannot find module di `.next`
 

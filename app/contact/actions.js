@@ -19,6 +19,22 @@ function validateContactMessage(data) {
   return errors
 }
 
+function getSubmitErrorMessage(error) {
+  if (error?.status === 'CONFIG_MISSING') {
+    return 'Konfigurasi Supabase di Vercel belum lengkap. Isi SUPABASE_URL dan SUPABASE_PUBLISHABLE_KEY, lalu redeploy.'
+  }
+
+  if (error?.status === 401 || error?.status === 403) {
+    return 'Supabase menolak akses. Periksa API key, RLS policy, dan grant insert tabel contact_messages.'
+  }
+
+  if (error?.status === 404) {
+    return 'Supabase tidak menemukan endpoint tabel. Pastikan SUPABASE_URL hanya sampai .supabase.co dan tabel contact_messages sudah dibuat.'
+  }
+
+  return `Pesan belum berhasil disimpan. Detail: ${error?.message || 'Periksa konfigurasi Supabase.'}`
+}
+
 export async function saveContactMessage(formData) {
   const payload = {
     name: normalize(formData.name),
@@ -51,8 +67,7 @@ export async function saveContactMessage(formData) {
 
     return {
       status: 'error',
-      message:
-        'Pesan belum berhasil disimpan. Periksa konfigurasi Supabase, API key, tabel, dan insert policy.',
+      message: getSubmitErrorMessage(error),
       errors: {},
     }
   }
