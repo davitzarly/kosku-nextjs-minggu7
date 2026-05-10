@@ -1,0 +1,413 @@
+.dashboard {
+  background: #f8fafc;
+  min-height: 72vh;
+  padding: 48px 0 80px;
+}
+
+.shell {
+  display: grid;
+  gap: 24px;
+}
+
+.header {
+  align-items: flex-start;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.header h1 {
+  color: #1f2a37;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 8px;
+}
+
+.header p {
+  color: #4b5563;
+  font-size: 1rem;
+}
+
+.logoutButton {
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  color: #374151;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  padding: 10px 16px;
+}
+
+.logoutButton:hover {
+  border-color: #1a9547;
+  color: #1a9547;
+}
+
+.summaryGrid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.summaryItem,
+.summarySkeleton {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  min-height: 94px;
+  padding: 18px;
+}
+
+.summaryItem {
+  display: grid;
+  gap: 8px;
+}
+
+.summaryItem span {
+  color: #6b7280;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.summaryItem strong {
+  color: #1f2a37;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.manager {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(31, 42, 55, 0.06);
+  overflow: hidden;
+}
+
+.toolbar {
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  gap: 18px;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.toolbar h2 {
+  color: #1f2a37;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.15rem;
+  margin-bottom: 2px;
+}
+
+.toolbar p {
+  color: #6b7280;
+  font-size: 0.88rem;
+}
+
+.searchBox {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  max-width: 420px;
+  width: 100%;
+}
+
+.searchBox input {
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  color: #1f2a37;
+  font: inherit;
+  min-width: 0;
+  padding: 11px 13px;
+  width: 100%;
+}
+
+.searchBox input:focus {
+  border-color: #1a9547;
+  outline: none;
+}
+
+.searchBox button {
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  color: #4b5563;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+  height: 42px;
+  width: 42px;
+}
+
+.notice {
+  background: #e8f8ee;
+  border-bottom: 1px solid #bbf7d0;
+  color: #136835;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 12px 20px;
+}
+
+.tableHeader {
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  color: #6b7280;
+  display: grid;
+  font-size: 0.74rem;
+  font-weight: 800;
+  gap: 16px;
+  grid-template-columns: minmax(220px, 1.2fr) 150px 140px 180px;
+  letter-spacing: 0.08em;
+  padding: 12px 20px;
+  text-transform: uppercase;
+}
+
+.list {
+  display: grid;
+}
+
+.row {
+  align-items: center;
+  border-bottom: 1px solid #eef2f7;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(220px, 1.2fr) minmax(0, 1.9fr);
+  padding: 18px 20px;
+}
+
+.row:last-child {
+  border-bottom: 0;
+}
+
+.propertyInfo {
+  display: grid;
+  gap: 4px;
+}
+
+.propertyInfo strong {
+  color: #111827;
+  font-size: 1rem;
+}
+
+.propertyInfo span,
+.propertyInfo small {
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.updateForm {
+  align-items: end;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(120px, 150px) minmax(120px, 150px) minmax(130px, 1fr) auto;
+}
+
+.updateForm label {
+  color: #4b5563;
+  display: grid;
+  font-size: 0.76rem;
+  font-weight: 800;
+  gap: 6px;
+}
+
+.updateForm input,
+.updateForm select {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  color: #1f2a37;
+  font: inherit;
+  min-height: 40px;
+  padding: 9px 10px;
+}
+
+.updateForm input:focus,
+.updateForm select:focus {
+  border-color: #1a9547;
+  outline: none;
+}
+
+.statusWrap {
+  align-self: center;
+  display: grid;
+  gap: 6px;
+}
+
+.statusWrap small {
+  color: #4b5563;
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.status {
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 0.78rem;
+  font-weight: 800;
+  justify-content: center;
+  padding: 4px 10px;
+  width: fit-content;
+}
+
+.statusAvailable {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.statusLimited {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.statusFull {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actions button {
+  border-radius: 8px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 800;
+  min-height: 40px;
+  padding: 9px 12px;
+}
+
+.actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.saveButton {
+  background: #1a9547;
+  border: 1px solid #1a9547;
+  color: #fff;
+}
+
+.deleteButton {
+  background: #fff;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+}
+
+.emptyState {
+  color: #4b5563;
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+  padding: 48px 20px;
+  text-align: center;
+}
+
+.emptyState strong {
+  color: #1f2a37;
+}
+
+.loadingHeader,
+.toolbarSkeleton,
+.rowSkeleton,
+.summarySkeleton {
+  background: linear-gradient(90deg, #eef2f7, #f8fafc, #eef2f7);
+  background-size: 220% 100%;
+  animation: pulse 1.1s ease-in-out infinite;
+}
+
+.loadingHeader {
+  border-radius: 8px;
+  display: grid;
+  gap: 12px;
+  max-width: 520px;
+  padding: 18px;
+}
+
+.loadingHeader span,
+.loadingHeader strong,
+.loadingHeader p {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  display: block;
+}
+
+.loadingHeader span {
+  height: 12px;
+  width: 120px;
+}
+
+.loadingHeader strong {
+  height: 34px;
+  width: 80%;
+}
+
+.loadingHeader p {
+  height: 16px;
+  width: 70%;
+}
+
+.toolbarSkeleton {
+  border-bottom: 1px solid #e5e7eb;
+  height: 82px;
+}
+
+.rowSkeleton {
+  border-bottom: 1px solid #eef2f7;
+  height: 92px;
+}
+
+@keyframes pulse {
+  to {
+    background-position: -220% 0;
+  }
+}
+
+@media (max-width: 980px) {
+  .toolbar,
+  .header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .searchBox {
+    max-width: none;
+  }
+
+  .tableHeader {
+    display: none;
+  }
+
+  .row {
+    align-items: stretch;
+    grid-template-columns: 1fr;
+  }
+
+  .updateForm {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .statusWrap,
+  .actions {
+    align-self: stretch;
+  }
+}
+
+@media (max-width: 700px) {
+  .dashboard {
+    padding-top: 32px;
+  }
+
+  .summaryGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .updateForm {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+}

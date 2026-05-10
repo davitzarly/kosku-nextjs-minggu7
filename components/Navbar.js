@@ -12,6 +12,7 @@ const navLinks = [
   { href: '/about', label: 'Tentang' },
   { href: '/services', label: 'Layanan' },
   { href: '/contact', label: 'Kontak' },
+  { href: '/dashboard', label: 'Dashboard' },
 ]
 
 export default function Navbar() {
@@ -33,7 +34,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`${styles.navLink} ${pathname === link.href ? styles.active : ''}`}
+              className={`${styles.navLink} ${pathname === link.href || pathname.startsWith(`${link.href}/`) ? styles.active : ''}`}
             >
               {link.label}
             </Link>
@@ -63,7 +64,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`${styles.mobileLink} ${pathname === link.href ? styles.mobileLinkActive : ''}`}
+              className={`${styles.mobileLink} ${pathname === link.href || pathname.startsWith(`${link.href}/`) ? styles.mobileLinkActive : ''}`}
               onClick={() => setIsOpen(false)}
             >
               {link.label}

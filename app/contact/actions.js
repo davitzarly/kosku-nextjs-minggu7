@@ -1,22 +1,47 @@
 'use server'
 
+import { z } from 'zod'
 import { insertContactMessage } from '@/lib/supabaseContact'
 
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const nullableText = (max, message) =>
+  z.preprocess(
+    (value) => (typeof value === 'string' ? value.trim() : ''),
+    z.string().max(max, message)
+  ).transform((value) => value || null)
 
-function normalize(value) {
-  return typeof value === 'string' ? value.trim() : ''
+const contactMessageSchema = z.object({
+  name: z.preprocess(
+    (value) => (typeof value === 'string' ? value.trim() : ''),
+    z.string().min(1, 'Nama wajib diisi').max(100, 'Nama maksimal 100 karakter')
+  ),
+  email: z.preprocess(
+    (value) => (typeof value === 'string' ? value.trim().toLowerCase() : ''),
+    z.string().min(1, 'Email wajib diisi').email('Format email tidak valid')
+  ),
+  phone: nullableText(30, 'Nomor HP maksimal 30 karakter'),
+  subject: nullableText(80, 'Subjek maksimal 80 karakter'),
+  message: z.preprocess(
+    (value) => (typeof value === 'string' ? value.trim() : ''),
+    z.string().min(1, 'Pesan wajib diisi').max(1200, 'Pesan maksimal 1200 karakter')
+  ),
+})
+
+function toContactPayload(formData) {
+  return {
+    name: formData?.name,
+    email: formData?.email,
+    phone: formData?.phone,
+    subject: formData?.subject,
+    message: formData?.message,
+  }
 }
 
-function validateContactMessage(data) {
-  const errors = {}
-
-  if (!data.name) errors.name = 'Nama wajib diisi'
-  if (!data.email) errors.email = 'Email wajib diisi'
-  else if (!emailPattern.test(data.email)) errors.email = 'Format email tidak valid'
-  if (!data.message) errors.message = 'Pesan wajib diisi'
-
-  return errors
+function formatZodErrors(error) {
+  return error.issues.reduce((fields, issue) => {
+    const field = issue.path[0]
+    if (field && !fields[field]) fields[field] = issue.message
+    return fields
+  }, {})
 }
 
 function getSubmitErrorMessage(error) {
@@ -36,26 +61,18 @@ function getSubmitErrorMessage(error) {
 }
 
 export async function saveContactMessage(formData) {
-  const payload = {
-    name: normalize(formData.name),
-    email: normalize(formData.email).toLowerCase(),
-    phone: normalize(formData.phone) || null,
-    subject: normalize(formData.subject) || null,
-    message: normalize(formData.message),
-  }
+  const result = contactMessageSchema.safeParse(toContactPayload(formData))
 
-  const errors = validateContactMessage(payload)
-
-  if (Object.keys(errors).length > 0) {
+  if (!result.success) {
     return {
       status: 'error',
       message: 'Periksa kembali data yang wajib diisi.',
-      errors,
+      errors: formatZodErrors(result.error),
     }
   }
 
   try {
-    await insertContactMessage(payload)
+    await insertContactMessage(result.data)
 
     return {
       status: 'success',

@@ -23,7 +23,10 @@ export default function ContactForm() {
     if (!formData.name.trim()) newErrors.name = 'Nama wajib diisi'
     if (!formData.email.trim()) newErrors.email = 'Email wajib diisi'
     else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Format email tidak valid'
+    if (formData.phone.trim().length > 30) newErrors.phone = 'Nomor HP maksimal 30 karakter'
+    if (formData.subject.trim().length > 80) newErrors.subject = 'Subjek maksimal 80 karakter'
     if (!formData.message.trim()) newErrors.message = 'Pesan wajib diisi'
+    if (formData.message.trim().length > 1200) newErrors.message = 'Pesan maksimal 1200 karakter'
     return newErrors
   }
 
@@ -123,18 +126,29 @@ export default function ContactForm() {
             value={formData.phone}
             onChange={handleChange}
             placeholder="08xxxxxxxxxx"
+            className={errors.phone ? styles.inputError : ''}
+            aria-invalid={Boolean(errors.phone)}
           />
+          {errors.phone && <span className={styles.errorMsg}>{errors.phone}</span>}
         </div>
 
         <div className="form-group">
           <label htmlFor="subject">Subjek</label>
-          <select id="subject" name="subject" value={formData.subject} onChange={handleChange}>
+          <select
+            id="subject"
+            name="subject"
+            value={formData.subject}
+            onChange={handleChange}
+            className={errors.subject ? styles.inputError : ''}
+            aria-invalid={Boolean(errors.subject)}
+          >
             <option value="">Pilih topik...</option>
             <option value="pencarian-kos">Pencarian Kos</option>
             <option value="daftar-properti">Daftarkan Properti</option>
             <option value="pembayaran">Masalah Pembayaran</option>
             <option value="lainnya">Lainnya</option>
           </select>
+          {errors.subject && <span className={styles.errorMsg}>{errors.subject}</span>}
         </div>
       </div>
 
