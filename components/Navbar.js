@@ -42,9 +42,9 @@ export default function Navbar() {
         </nav>
 
         {/* CTA Button */}
-     <Link href="/contact" className={`btn-primary ${styles.ctaBtn}`} style={{ fontSize: '0.85rem', padding: '9px 20px' }}>
-  Cari Kos
-</Link>
+        <Link href="/login?next=/dashboard/manage" className={`btn-primary ${styles.ctaBtn}`}>
+          Login
+        </Link>
         {/* HAMBURGER (mobile) */}
         <button
           className={styles.hamburger}
@@ -70,6 +70,13 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+          <Link
+            href="/login?next=/dashboard/manage"
+            className={styles.mobileLink}
+            onClick={() => setIsOpen(false)}
+          >
+            Login
+          </Link>
         </div>
       )}
     </header>

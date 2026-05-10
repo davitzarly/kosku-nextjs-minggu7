@@ -7,7 +7,7 @@ export const metadata = {
 }
 
 export default function LoginPage({ searchParams }) {
-  const nextUrl = typeof searchParams?.next === 'string' ? searchParams.next : '/dashboard'
+  const nextUrl = typeof searchParams?.next === 'string' ? searchParams.next : '/dashboard/manage'
 
   return (
     <section className={styles.loginSection}>
@@ -16,8 +16,7 @@ export default function LoginPage({ searchParams }) {
           <div className="section-label">Admin KosKu</div>
           <h1>Masuk untuk mengelola data kos.</h1>
           <p>
-            Kelola daftar properti, ketersediaan kamar, dan harga sewa dari
-            satu tempat.
+            Tambahkan, ubah, atau hapus card kos yang tampil di katalog publik.
           </p>
         </div>
 

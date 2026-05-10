@@ -58,7 +58,8 @@ export default function ContactForm() {
     setErrors({})
 
     try {
-      const result = await saveContactMessage(formData)
+      const payload = new FormData(e.currentTarget)
+      const result = await saveContactMessage(payload)
 
       setStatus(result.status)
       setNotice(result.message)

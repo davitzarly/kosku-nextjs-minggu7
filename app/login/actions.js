@@ -7,11 +7,15 @@ const SESSION_COOKIE = 'kosku_session'
 const DEFAULT_ADMIN_PASSWORD = 'kosku-admin'
 
 function getSafeRedirect(value) {
+  if (value === '/dashboard') {
+    return '/dashboard/manage'
+  }
+
   if (typeof value === 'string' && value.startsWith('/dashboard')) {
     return value
   }
 
-  return '/dashboard'
+  return '/dashboard/manage'
 }
 
 export async function loginAdmin(prevState, formData) {

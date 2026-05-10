@@ -112,4 +112,7 @@
 .ctaBtn {
   position: relative;
   z-index: 10;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  padding: 9px 20px;
 }

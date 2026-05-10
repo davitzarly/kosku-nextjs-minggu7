@@ -28,11 +28,11 @@ const contactMessageSchema = z.object({
 
 function toContactPayload(formData) {
   return {
-    name: formData?.name,
-    email: formData?.email,
-    phone: formData?.phone,
-    subject: formData?.subject,
-    message: formData?.message,
+    name: formData.get('name'),
+    email: formData.get('email'),
+    phone: formData.get('phone'),
+    subject: formData.get('subject'),
+    message: formData.get('message'),
   }
 }
 

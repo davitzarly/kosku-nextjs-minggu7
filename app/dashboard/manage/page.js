@@ -1,15 +1,16 @@
+import { logoutAdmin } from '@/app/login/actions'
 import { getKosProperties } from '@/lib/supabaseKos'
-import DashboardClient from './DashboardClient'
-import styles from './dashboard.module.css'
+import DashboardClient from '../DashboardClient'
+import styles from '../dashboard.module.css'
 
 export const dynamic = 'force-dynamic'
 
 export const metadata = {
-  title: 'Daftar Kos - KosKu',
-  description: 'Daftar kos tersedia di KosKu.',
+  title: 'Kelola Kos - KosKu',
+  description: 'Tambah, ubah, dan hapus card kos KosKu.',
 }
 
-export default async function DashboardPage({ searchParams }) {
+export default async function ManageDashboardPage({ searchParams }) {
   const query = typeof searchParams?.q === 'string' ? searchParams.q : ''
   let properties = []
   let allProperties = []
@@ -34,10 +35,16 @@ export default async function DashboardPage({ searchParams }) {
       <div className={`container ${styles.shell}`}>
         <header className={styles.header}>
           <div>
-            <div className="section-label">Katalog KosKu</div>
-            <h1>Daftar Kos Tersedia</h1>
-            <p>Pilih kos dari card properti, lihat detail singkat, lalu checkout dengan QRIS.</p>
+            <div className="section-label">Admin KosKu</div>
+            <h1>Kelola Card Kos</h1>
+            <p>Tambahkan, ubah, atau hapus card kos yang tampil di katalog publik.</p>
           </div>
+
+          <form action={logoutAdmin}>
+            <button type="submit" className={styles.logoutButton}>
+              Logout
+            </button>
+          </form>
         </header>
 
         <div className={styles.summaryGrid}>
@@ -67,8 +74,8 @@ export default async function DashboardPage({ searchParams }) {
           initialProperties={properties}
           initialQuery={query}
           totalCount={allProperties.length}
-          canManage={false}
-          showCheckout
+          canManage
+          showCheckout={false}
         />
       </div>
     </section>
