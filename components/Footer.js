@@ -51,7 +51,7 @@ export default function Footer() {
 
       <div className={`container ${styles.bottom}`}>
         <p>© {currentYear} KosKu. All rights reserved. Built with Next.js 14 🚀</p>
-        <p className={styles.credit}>Dibuat oleh <strong>Davit Zarly</strong> — Tugas MSIB</p>
+        <p className={styles.credit}>Dibuat oleh <strong>Davit Zarly</strong> — Tugas MSIB </p>
       </div>
     </footer>
   )
