@@ -6,8 +6,9 @@ export const metadata = {
   description: 'Masuk ke dashboard admin KosKu.',
 }
 
-export default function LoginPage({ searchParams }) {
-  const nextUrl = typeof searchParams?.next === 'string' ? searchParams.next : '/dashboard/manage'
+export default async function LoginPage({ searchParams }) {
+  const params = await searchParams
+  const nextUrl = typeof params?.next === 'string' ? params.next : '/dashboard/manage'
 
   return (
     <section className={styles.loginSection}>

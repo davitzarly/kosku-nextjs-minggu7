@@ -11,7 +11,8 @@ export const metadata = {
 }
 
 export default async function ManageDashboardPage({ searchParams }) {
-  const query = typeof searchParams?.q === 'string' ? searchParams.q : ''
+  const params = await searchParams
+  const query = typeof params?.q === 'string' ? params.q : ''
   let properties = []
   let allProperties = []
   let setupError = ''
