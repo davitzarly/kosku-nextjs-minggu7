@@ -503,9 +503,11 @@
   box-shadow: 0 24px 70px rgba(17, 24, 39, 0.28);
   display: grid;
   gap: 18px;
-  max-width: 680px;
+  max-height: calc(100vh - 48px);
+  max-width: 760px;
+  overflow: auto;
   padding: 22px;
-  width: min(100%, 680px);
+  width: min(100%, 760px);
 }
 
 .modalHeader {
@@ -548,7 +550,7 @@
 .checkoutContent {
   display: grid;
   gap: 18px;
-  grid-template-columns: minmax(0, 1fr) 220px;
+  grid-template-columns: minmax(0, 1fr) 260px;
 }
 
 .checkoutSummary {
@@ -586,21 +588,18 @@
 
 .qrisCode {
   background: #fff;
-  border: 8px solid #111827;
-  display: grid;
-  gap: 3px;
-  grid-template-columns: repeat(7, 1fr);
-  height: 150px;
-  padding: 8px;
-  width: 150px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  max-width: 230px;
+  overflow: hidden;
+  padding: 6px;
+  width: 100%;
 }
 
-.qrisCode span {
-  background: #fff;
-}
-
-.qrisCode .qrDark {
-  background: #111827;
+.qrisImage {
+  display: block;
+  height: auto;
+  width: 100%;
 }
 
 .paymentBox p {

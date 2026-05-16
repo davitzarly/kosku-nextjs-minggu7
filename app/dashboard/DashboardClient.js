@@ -1,6 +1,7 @@
 'use client'
 
 import { useOptimistic, useState, useTransition } from 'react'
+import Image from 'next/image'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { createKosAction, deleteKosAction, updateKosAction } from './actions'
 import styles from './dashboard.module.css'
@@ -434,12 +435,17 @@ export default function DashboardClient({
                   <span>Metode Pembayaran</span>
                   <strong>QRIS</strong>
                 </div>
-                <div className={styles.qrisCode} aria-label="QRIS pembayaran simulasi">
-                  {Array.from({ length: 49 }).map((_, index) => (
-                    <span key={index} className={index % 3 === 0 || index % 7 === 0 ? styles.qrDark : ''} />
-                  ))}
+                <div className={styles.qrisCode}>
+                  <Image
+                    src="/qris-kosku.jpeg"
+                    alt="QRIS pembayaran KosKu"
+                    width={220}
+                    height={310}
+                    className={styles.qrisImage}
+                    priority
+                  />
                 </div>
-                <p>Scan QRIS untuk membayar biaya booking kos.</p>
+                <p>Scan QRIS resmi untuk membayar biaya booking kos.</p>
               </div>
             </div>
 
